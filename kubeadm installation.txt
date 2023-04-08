@@ -1,0 +1,35 @@
+To install kubeadm on Ubuntu, you can use the following steps:
+============================================================
+Update the package manager's package list by running the following command:
+sudo apt-get update
+
+Install the apt-transport-https package, which is required to retrieve packages over HTTPS:==========================================================================
+sudo apt-get install apt-transport-https
+
+Add the Google Cloud Package Repository configuration to your system:
+===================================================================
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+Download the GPG key used to sign the packages:
+===============================================
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+Update the package manager's package list again:
+==============================================
+sudo apt-get update
+
+Install kubeadm by running the following command:
+================================================
+sudo apt-get install kubeadm
+
+That's it! kubeadm should now be installed on your system. To verify that the installation was successful, you can run the following command:
+
+
+kubeadm version
+
+This should print the version number of kubeadm that was installed.
+
+Note: kubeadm is a tool for bootstrapping a Kubernetes cluster. It is not intended to be a long-term solution for managing a cluster. It is recommended to use a more full-featured solution such as kubectl or a Kubernetes deployment tool (e.g. helm, kops, etc.) for ongoing cluster management.
+
+
+

@@ -1,0 +1,31 @@
+
+
+
+
+To install kubectl on Ubuntu, you can use the following steps:
+================================================================
+Update the package manager's package list by running the following command:
+sudo apt-get update
+
+Install the apt-transport-https package, which is required to retrieve packages over HTTPS:
+sudo apt-get install apt-transport-https
+
+Add the Google Cloud Package Repository configuration to your system:
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+
+Download the GPG key used to sign the packages:
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+
+Update the package manager's package list again:
+sudo apt-get update
+
+Install kubectl by running the following command:
+sudo apt-get install kubectl
+
+That's it! kubectl should now be installed on your system. To verify that the installation was successful, you can run the following command:
+
+kubectl version
+This should print the version number of kubectl that was installed.
+
+
+

@@ -1,0 +1,80 @@
+DATA VOLUME WITH MYSQL DOCKER CONTAINER
+========================================
+
+STEP1: Need to run the MYSQL docker conntainer.
+
+* Launch the ec2 instance by using amazon linux or ubuntu
+connect through the ssh
+
+install the docker
+YUM INSTALL DOCKER .IO
+
+pull the image from the docker hub
+DOCKER PULL MYSQL/MYSQL-SERVER
+
+check the images in the docker
+DOCKER IMAGES
+
+ create the valume
+DOCKER CREATE -V /VAR/LIB/MYSQL --NAME MYSQLDATA MYSQL/MYSQL-SERVER
+mysqldata=volume name
+myaql/mysql-server
+v=volume
+
+run the docker container
+DOCKER RUN -P 3307:3307 -D -E MYSQL_ROOT_PASSWORD=ROOT --VOLUMES-FROM MYSQLDATA --NAME=MYSQLCONTAINER MYSQL/MYSQL-SERVER
+MYSQLCONTAINER=container name
+
+check the container whether it is running or not
+DOCKER PS
+
+move into the container
+DOCKER EXEC -IT MYSQLCONTAINER BASH
+
+login into the database
+MYSQL -UROOT -P
+ WE HAVE TO PROVIDE THE PASSWORD
+
+NOW WE ARE IN MYSQL DATABASE
+CREATE A DATA BASE
+create database my_first_database
+  
+EXCUTE THE COMMANDS
+SHOW DATABASES;
+
+now exit from the mysql
+EXIT 
+EXIT
+
+now delete the container
+DOCKER RM -F (CONTAINER NAME) OR ID
+ 
+create a new container 
+DOCKER RUN -P 3307:3307 -D -E MYSQL_ROOT_PASSWORD=ROOT --VOLUMES-FROM MYSQLDATA --NAME=MYSQLCONTAINER1 MYSQL/MYSQL-SERVER
+ 
+move into the container
+DOCKER EXEC -IT MYSQLCONTAINER1 BASH
+
+now execute the mysql command
+MYSQL -UROOT -P
+PASSWORD:
+
+EXEC THE COMMAND 
+show databses;
+
+
+
+creating new password
+
+DOCKER LOGS MYSQL
+we can get password in the logs
+GENERATED NEW PASSWORD:
+
+for changing the password
+
+ALTER USER 'root'@localhost' IDENTIFIED BY 'PASSWORD';
+
+ALTER USER 'root'@localhost' IDENTIFIED BY 'CHINNI';
+
+
+ 
